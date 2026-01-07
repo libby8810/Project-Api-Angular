@@ -1,0 +1,29 @@
+{
+  "Serilog": {
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "=====>[{Level:u3}] {Timestamp} | {SourceContext} | {Application}-{Environment} ({AssemblyVersion}) | {MachineName}<====={NewLine}{Message:lj}{NewLine}{Exception}"
+        }
+      }
+    ],
+    "MinimumLevel": {
+      "Default": "Debug",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning",
+        "Quartz": "Warning",
+        "Topshelf": "Warning"
+      }
+    },
+    "Properties": {
+      "Application": "Schedulr",
+      "Environment": "Staging"
+    }
+  },
+  "QuartzSettings": {
+    //https://www.freeformatter.com/cron-expression-generator-quartz.html
+    "CronExpression": "0/5 * * * * ?"
+  }
+}
